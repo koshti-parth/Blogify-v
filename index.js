@@ -5,7 +5,9 @@ let mongoose = require("mongoose");
 let {userRouter}       = require("./routes/user.route");
 let {blogRouter}   = require("./routes/blog.route");
 let {userMiddleware} = require("./middlewares/user.middleware");
+let cors = require("cors");
 
+app.use(cors())
 //Mongodb Connection
 mongoose.connect("mongodb://localhost:27017/Blogify")
 .then((val) => console.log("Db connected"))
@@ -17,9 +19,7 @@ app.use(express.json());
 
 
 //Routes
-app.use("/api/products" ,userMiddleware,productRouter);
 app.use("/api/user"    ,userRouter);
-app.use("/api/business",userMiddleware,businessRouter);
 app.use("/api/blogs",userMiddleware,blogRouter)
 
 
