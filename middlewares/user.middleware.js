@@ -1,4 +1,4 @@
-let { verifyToken } = require("../services/jwt");
+let { verifyToken, isTokenBlacklisted } = require("../services/jwt");
 
 function userMiddleware(req, res, next) {
   try {
@@ -24,6 +24,14 @@ function userMiddleware(req, res, next) {
       });
     }
 
+    // 2b. check blacklist
+    if (isTokenBlacklisted(token)) {
+      return res.status(401).json({
+        status: false,
+        message: "Token expired/invalid (logged out)"
+      });
+    }
+
     // 3. verify token
     let decoded = verifyToken(token);
     // console.log("Decode User : ",decoded);
@@ -39,9 +47,9 @@ function userMiddleware(req, res, next) {
     
   } catch (error) {
     console.log("User Middleware Error : ", error);
-    return res.send({
+    return res.status(401).send({
       status: false,
-      message: "Token is missing",
+      message: "Invalid or expired token",
     });
   }
 }

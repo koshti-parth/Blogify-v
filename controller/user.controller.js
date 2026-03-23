@@ -1,5 +1,5 @@
 let { userModel} = require("../models/user.model");
-let {makeToken} = require("../services/jwt");
+let {makeToken, blacklistToken} = require("../services/jwt");
 let bcrypt = require("bcrypt")
 
 function handleError(fName,res,error){
@@ -208,7 +208,37 @@ async function login(req,res){
     }
 }
 
+async function logout(req,res){
+    try {
+        const authHeader = req.headers.authorization;
+        if (!authHeader) {
+            return res.status(400).send({
+                status:false,
+                message:"Authorization header missing"
+            });
+        }
+
+        const [type, token] = authHeader.split(" ");
+        if (type !== "Bearer" || !token) {
+            return res.status(400).send({
+                status:false,
+                message:"Invalid authorization format"
+            });
+        }
+
+        blacklistToken(token);
+
+        // If you had cookies: res.clearCookie("Token");
+
+        return res.status(200).send({
+            status:true,
+            message:"User logged out successfully"
+        });
+    } catch (error) {
+        handleError("logout",res,error);
+    }
+}
 
 module.exports = {
-    createUser,getUser,getAllUser,updateUser,deleteUser,login
+    createUser,getUser,getAllUser,updateUser,deleteUser,login,logout
 }

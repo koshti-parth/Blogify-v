@@ -1,6 +1,6 @@
 let express     = require("express");
 let userRouter  =  express.Router();
-let {createUser,getUser,getAllUser,updateUser,deleteUser,login} = require("../controller/user.controller");
+let {createUser,getUser,getAllUser,updateUser,deleteUser,login,logout} = require("../controller/user.controller");
 let {userMiddleware} = require("../middlewares/user.middleware");
 
 
@@ -13,6 +13,7 @@ userRouter.delete("/user",userMiddleware,deleteUser);
 //Auth
 userRouter.post("/signup",createUser);
 userRouter.post("/login",login);
+userRouter.post("/logout",userMiddleware,logout);
 
 module.exports = {
     userRouter
