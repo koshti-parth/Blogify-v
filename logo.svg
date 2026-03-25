@@ -1,0 +1,24 @@
+<svg width="320" height="100" viewBox="0 0 320 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Orange rounded square -->
+  <rect x="10" y="10" width="80" height="80" rx="20" fill="#FF5A1F"></rect>
+
+  <!-- Letter B -->
+  <text x="35" y="65" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" fill="white">B</text>
+
+  <!-- Minimal network dots -->
+  <circle cx="70" cy="35" r="3" fill="white"></circle>
+  <circle cx="78" cy="50" r="3" fill="white"></circle>
+  <circle cx="70" cy="65" r="3" fill="white"></circle>
+
+  <!-- Lines -->
+  <line x1="60" y1="50" x2="70" y2="35" stroke="white" stroke-width="2"></line>
+  <line x1="60" y1="50" x2="78" y2="50" stroke="white" stroke-width="2"></line>
+  <line x1="60" y1="50" x2="70" y2="65" stroke="white" stroke-width="2"></line>
+
+  <!-- Text Blogify -->
+  <text x="110" y="60" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="600" fill="#1E1B2E">
+    Blogify
+  </text>
+
+</svg>

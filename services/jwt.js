@@ -1,5 +1,7 @@
 let jwt = require("jsonwebtoken");
-let SECRET_KEY = "parth6359717897";
+
+let dotenv = require("dotenv").config();
+let SECRET_KEY = process.env.SECRET_KEY;
 
 // In-memory blacklist for logout tokens (demo only).
 // For production use Redis/DB with expiration for horizontal scaling.
