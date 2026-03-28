@@ -3,11 +3,11 @@ let blogRouter  = express.Router();
 let {createBlog,getBlog,getAllBlog,updateBlog,deleteBlog,deleteAllBlog} = require("../controller/blog.controller")
 
 blogRouter.post("/",createBlog);
+blogRouter.get("/getAllBlog",getAllBlog);
 blogRouter.get("/:id",getBlog);
-blogRouter.get("/allBlogs",getAllBlog);
 blogRouter.patch("/:id",updateBlog);
+blogRouter.delete("/deleteAllBlog",deleteAllBlog);
 blogRouter.delete("/:id",deleteBlog);
-blogRouter.delete("/",deleteAllBlog);
 
 module.exports = {
     blogRouter
