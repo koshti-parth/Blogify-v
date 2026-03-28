@@ -4,7 +4,7 @@ let {createBlog,getBlog,getAllBlog,updateBlog,deleteBlog,deleteAllBlog} = requir
 
 blogRouter.post("/",createBlog);
 blogRouter.get("/:id",getBlog);
-blogRouter.get("/",getAllBlog);
+blogRouter.get("/allBlogs",getAllBlog);
 blogRouter.patch("/:id",updateBlog);
 blogRouter.delete("/:id",deleteBlog);
 blogRouter.delete("/",deleteAllBlog);
